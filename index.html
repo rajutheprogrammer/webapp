@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CYBERSPOT - A modern and optimized website offering insights about us, a stunning gallery, and easy contact options.">
+    <meta name="keywords" content="CYBERSPOT, Gallery, About Us, Contact, SEO, Mobile-Friendly">
+    <meta name="author" content="CYBERSPOT Team">
+    <title>CYBERSPOT</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(45deg, #1d3557, #457b9d);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .section {
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #1d3557;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        form label {
+            margin: 10px 0 5px;
+            text-align: left;
+            color: #1d3557;
+            font-weight: bold;
+        }
+        form input, form textarea, form button {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        form input, form textarea {
+            background-color: #f4f4f9;
+        }
+        form button {
+            background: linear-gradient(45deg, #1d3557, #457b9d);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        form button:hover {
+            background: linear-gradient(45deg, #457b9d, #1d3557);
+        }
+        footer {
+            background-color: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="w3-container w3-center w3-padding-32">
+        <div class="container">
+            <h1 class="w3-xxlarge">CYBERSPOT</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="w3-container w3-light-grey section">
+            <h2 style="color: #1d3557;">Welcome to CYBERSPOT</h2>
+            <p>Your one-stop destination for all things cyber and tech-related. Explore our gallery, learn about our journey, and connect with us.</p>
+        </section>
+
+        <section id="gallery" class="w3-container section">
+            <h2 style="color: #457b9d;">Gallery</h2>
+            <div class="gallery">
+                <img src="image1.jpg" alt="Gallery Image 1">
+                <img src="image2.jpg" alt="Gallery Image 2">
+                <img src="image3.jpg" alt="Gallery Image 3">
+                <img src="image4.jpg" alt="Gallery Image 4">
+            </div>
+        </section>
+
+        <section id="about" class="w3-container w3-light-grey section">
+            <h2 style="color: #1d3557;">About Us</h2>
+            <p>At CYBERSPOT, we are passionate about technology and innovation. Our mission is to bring cutting-edge insights and showcase our creative ventures in the cyber world.</p>
+        </section>
+
+        <section id="contact" class="w3-container section">
+            <h2 style="color: #457b9d;">Contact Us</h2>
+           <form id="contactForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button class="w3-button" type="button" onclick="submitForm()">Submit</button>
+</form>
+
+        </section>
+    </main>
+
+    <footer class="w3-container w3-center">
+        <p>&copy; 2024 CYBERSPOT. All Rights Reserved.</p>
+    </footer>
+ <script>
+   
+   const scriptURL = 'https://script.google.com/macros/s/AKfycbyI3VsvMOUscVCEZe2ByYtvIXEzGIFXB-BGksXVdtooC3yITTfyO8hYqEZgDTVNCaeHGg/exec'; // Replace with your Web App URL
+
+async function submitForm() {
+    // Get the form element
+    const form = document.getElementById('contactForm');
+    
+    // Create a JSON object from the form inputs
+    const formData = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value
+    };
+
+    try {
+        // Send data to Google Apps Script Web App
+        const response = await fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            alert('Form submitted successfully!');
+            form.reset(); // Clear the form fields after submission
+        } else {
+            alert('Failed to submit the form. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please check your connection and try again.');
+    }
+}
+ </script>
+</body>
+</html>
